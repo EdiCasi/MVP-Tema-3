@@ -16,3 +16,5 @@ C:\Users\Edi\source\repos\Scoala3\Scoala3\obj\Debug\Scoala3.csproj.GenerateResou
 C:\Users\Edi\source\repos\Scoala3\Scoala3\obj\Debug\Scoala3.csproj.CoreCompileInputs.cache
 C:\Users\Edi\source\repos\Scoala3\Scoala3\obj\Debug\Scoala3.exe
 C:\Users\Edi\source\repos\Scoala3\Scoala3\obj\Debug\Scoala3.pdb
+C:\Users\Edi\source\repos\Scoala3\Scoala3\obj\Debug\Views\Test.g.cs
+C:\Users\Edi\source\repos\Scoala3\Scoala3\obj\Debug\Views\Test.baml
