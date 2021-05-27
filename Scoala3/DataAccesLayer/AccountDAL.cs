@@ -11,7 +11,7 @@ namespace Scoala3.DataAccesLayer
 {
     class AccountDAL
     {
-        public static bool ExistAccount(Account account)
+        public static Account ExistAccount(Account account)
         {
             using (SqlConnection con = DALHelper.Connection)
             {
@@ -25,11 +25,11 @@ namespace Scoala3.DataAccesLayer
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    return true;
+                    return new Account(reader["username"].ToString(), reader["parola"].ToString(), reader["acces"].ToString());
                 }
                 reader.Close();
             }
-            return false;
+            return null;
         }
     }
 }
