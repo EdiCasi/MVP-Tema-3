@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Scoala3.Views"
+        
+        
         xmlns:ctx ="clr-namespace:Scoala3.ViewModel"
         xmlns:convert ="clr-namespace:Scoala3.Converters"
+        
+        
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Background="AntiqueWhite">

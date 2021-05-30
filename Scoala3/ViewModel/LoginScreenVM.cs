@@ -39,9 +39,12 @@ namespace Scoala3.ViewModel
         public void OpenWindow(object account)
         {
             Account readedAccount = AccountDAL.ExistAccount((Account)account);
-            if(readedAccount!=null)
+            if(readedAccount!=null && readedAccount.acces=="administrator")
             {
-
+                AdminWindow adminWindow = new AdminWindow();
+                System.Windows.Application.Current.MainWindow.Close();
+                App.Current.MainWindow = adminWindow;
+                adminWindow.Show();
             }
         }
 

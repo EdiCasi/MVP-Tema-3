@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Scoala3.Views
 {
     /// <summary>
-    /// Interaction logic for Test.xaml
+    /// Interaction logic for EditElevi.xaml
     /// </summary>
-    public partial class Test : Page
+    public partial class EditElevi : Window
     {
-        public Test()
+        public EditElevi()
         {
             InitializeComponent();
         }

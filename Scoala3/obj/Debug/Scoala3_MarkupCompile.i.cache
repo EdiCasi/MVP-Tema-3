@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Edi\source\repos\Scoala3\Scoala3\App.xaml
-2207923811
+3415641160
 
-131817014864
+15-610899476
 141066371409
-Views\MainWindow.xaml;Views\Test.xaml;
+Views\AdminWindow.xaml;Views\EditElevi.xaml;Views\MainWindow.xaml;
 
-False
+True
 
