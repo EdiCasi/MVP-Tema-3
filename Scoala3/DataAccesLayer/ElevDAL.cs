@@ -61,7 +61,7 @@ namespace Scoala3.DataAccesLayer
         {
             using (SqlConnection con = DALHelper.Connection)
             {
-                SqlCommand cmd = new SqlCommand("ModificaElev", con); //--> De aici incepem sa modificam
+                SqlCommand cmd = new SqlCommand("ModificaElev", con); 
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter paramIdElev = new SqlParameter("@elevID", Int32.Parse(elev.IdElev));
@@ -80,7 +80,7 @@ namespace Scoala3.DataAccesLayer
         {
             using (SqlConnection con = DALHelper.Connection)
             {
-                SqlCommand cmd = new SqlCommand("StergeElev", con); //--> De aici incepem sa modificam
+                SqlCommand cmd = new SqlCommand("StergeElev", con); 
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter paramIdElev = new SqlParameter("@id", Int32.Parse(elev.IdElev));
