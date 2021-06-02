@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace Scoala3.Models
 {
-    class Elev
+    class Profesor
     {
+        public string Id { get; set; }
         public string Nume { get; set; }
         public string Specializare { get; set; }
-        public int AnStudii { get; set; }
-
-        public string IdClasa { get; set; }
-        public string IdElev { get; set; }
+        public string isDiriginte { get; set; }
 
     }
 }

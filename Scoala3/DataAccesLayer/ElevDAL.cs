@@ -26,9 +26,10 @@ namespace Scoala3.DataAccesLayer
                 {
                     Elev elev = new Elev();
 
-                    elev.Nume = reader.GetString(0);
-                    elev.AnStudii = reader.GetInt32(1);
-                    elev.Specializare = reader.GetString(2);
+                    elev.IdElev = reader.GetInt32(0).ToString();
+                    elev.Nume = reader.GetString(1);
+                    elev.AnStudii = reader.GetInt32(2);
+                    elev.Specializare = reader.GetString(3);
                     result.Add(elev);
                 }
                 reader.Close();
@@ -47,10 +48,44 @@ namespace Scoala3.DataAccesLayer
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter paramNume = new SqlParameter("@name", elev.Nume);
-                SqlParameter paramIdClasa = new SqlParameter("@id_clasa", elev.IdClasa);
+                SqlParameter paramIdClasa = new SqlParameter("@id_clasa", Int32.Parse(elev.IdClasa));
 
                 cmd.Parameters.Add(paramNume);
                 cmd.Parameters.Add(paramIdClasa);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void ModifyElev(Elev elev)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("ModificaElev", con); //--> De aici incepem sa modificam
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter paramIdElev = new SqlParameter("@elevID", Int32.Parse(elev.IdElev));
+                SqlParameter paramNume = new SqlParameter("@name", elev.Nume);
+                SqlParameter paramIdClasa = new SqlParameter("@clasa", Int32.Parse(elev.IdClasa));
+
+                cmd.Parameters.Add(paramIdElev);
+                cmd.Parameters.Add(paramNume);
+                cmd.Parameters.Add(paramIdClasa);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void DeleteElev(Elev elev)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("StergeElev", con); //--> De aici incepem sa modificam
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter paramIdElev = new SqlParameter("@id", Int32.Parse(elev.IdElev));
+
+                cmd.Parameters.Add(paramIdElev);
                 con.Open();
                 cmd.ExecuteNonQuery();
             }

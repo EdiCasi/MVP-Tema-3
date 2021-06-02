@@ -28,6 +28,20 @@ namespace Scoala3.ViewModel
             }
         }
 
+        private ICommand openEditProfesoriCommand;
+        public ICommand OpenEditProfesoriCommand
+        {
+            get
+            {
+                if (openEditProfesoriCommand == null)
+                {
+                    openEditProfesoriCommand = new RelayCommand<Elev>(OpenEditProfesori);
+                }
+
+                return openEditProfesoriCommand;
+            }
+        }
+
         private ICommand goBackCommand;
         public ICommand GoBackCommand
         {
@@ -50,7 +64,10 @@ namespace Scoala3.ViewModel
         { 
             HelperMethod.SwitchWindow(new EditElevi());
         }
-
+        public void OpenEditProfesori(object account)
+        {
+            HelperMethod.SwitchWindow(new EditProfesori());
+        }
         public void goBack(object account)
         {
            

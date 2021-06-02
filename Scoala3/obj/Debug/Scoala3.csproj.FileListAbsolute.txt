@@ -18,4 +18,6 @@ C:\Users\Edi\source\repos\Scoala3\Scoala3\obj\Debug\Views\AdminWindow.g.cs
 C:\Users\Edi\source\repos\Scoala3\Scoala3\obj\Debug\Views\AdminWindow.baml
 C:\Users\Edi\source\repos\Scoala3\Scoala3\obj\Debug\Views\EditElevi.g.cs
 C:\Users\Edi\source\repos\Scoala3\Scoala3\obj\Debug\Views\EditElevi.baml
+C:\Users\Edi\source\repos\Scoala3\Scoala3\obj\Debug\Views\EditProfesori.g.cs
+C:\Users\Edi\source\repos\Scoala3\Scoala3\obj\Debug\Views\EditProfesori.baml
 C:\Users\Edi\source\repos\Scoala3\Scoala3\obj\Debug\Scoala3.csprojAssemblyReference.cache

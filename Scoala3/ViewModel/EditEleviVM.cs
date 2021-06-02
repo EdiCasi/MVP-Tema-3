@@ -42,9 +42,35 @@ namespace Scoala3.ViewModel
             {
                 if (addCommand == null)
                 {
-                    addCommand = new RelayCommand<Elev>(goBack);
+                    addCommand = new RelayCommand<Elev>(addElev);
                 }
                 return addCommand;
+            }
+        }
+
+        private ICommand modifyCommand;
+        public ICommand ModifyCommand
+        {
+            get
+            {
+                if (modifyCommand == null)
+                {
+                    modifyCommand = new RelayCommand<Elev>(modifyElev);
+                }
+                return modifyCommand;
+            }
+        }
+
+        private ICommand deleteCommand;
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                if (deleteCommand == null)
+                {
+                    deleteCommand = new RelayCommand<Elev>(deleteElev);
+                }
+                return deleteCommand;
             }
         }
 
@@ -73,17 +99,53 @@ namespace Scoala3.ViewModel
             HelperMethod.SwitchWindow(new AdminWindow());
         }
 
-        public void addElev(Elev elev)
+        public void addElev(object elev)
         {
-            if(elev.IdClasa==0)
+            if (((Elev)elev).IdClasa == "")
             {
                 throw new Exception("Trebuie selectata o clasa in care sa fie elevul");
             }
-            if(String.IsNullOrEmpty(elev.Nume))
+            if (String.IsNullOrEmpty(((Elev)elev).Nume))
             {
                 throw new Exception("Numele persoanei trebuie sa fie precizat");
             }
-            ElevDAL.AddElev(elev);
+            ElevDAL.AddElev((Elev)elev);
+        }
+
+        public void modifyElev(object elev)
+        {
+            if (String.IsNullOrEmpty(((Elev)elev).IdClasa))
+            {
+                throw new Exception("Trebuie selectata o clasa in care sa fie elevul");
+            }
+            if (String.IsNullOrEmpty(((Elev)elev).Nume))
+            {
+                throw new Exception("Numele persoanei trebuie sa fie precizat");
+            }
+            if (String.IsNullOrEmpty(((Elev)elev).IdElev))
+            {
+                throw new Exception("Id-ul persoanei trebuie sa fie precizat");
+
+            }
+            ElevDAL.ModifyElev((Elev)elev);
+        }
+
+        public void deleteElev(object elev)
+        {
+            if (String.IsNullOrEmpty(((Elev)elev).IdElev))
+            {
+                throw new Exception("Id-ul persoanei trebuie sa fie precizat");
+
+            }
+            ElevDAL.DeleteElev((Elev)elev);
+            foreach (Elev index in elevi)
+            {
+                if (index.IdElev == ((Elev)elev).IdElev)
+                {
+                    elevi.Remove(index); 
+                    break; 
+                }
+            }
         }
         #endregion
     }

@@ -9,20 +9,19 @@ using System.Windows.Data;
 
 namespace Scoala3.Converters
 {
-    class ElevConverter : IMultiValueConverter
+    class ProfesorConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (values[0] != null && values[1] != null)
             {
-                string nume = values[0].ToString();
-                string idClasa = values[1].ToString();
-                string idElev = values[2].ToString();
-                return new Elev()
+
+                return new Profesor()
                 {
-                    Nume = nume,
-                    IdClasa = idClasa,
-                    IdElev = idElev
+                    Id = values[0].ToString(),
+                    Nume = values[1].ToString(),
+                    Specializare = values[2].ToString(),
+                    isDiriginte = values[3].ToString()
                 };
             }
             else
@@ -35,6 +34,5 @@ namespace Scoala3.Converters
         {
             throw new NotImplementedException();
         }
-
     }
 }
