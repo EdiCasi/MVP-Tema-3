@@ -4,11 +4,126 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Scoala3.Views"
+        
+        xmlns:ctx ="clr-namespace:Scoala3.ViewModel"
+        xmlns:convert="clr-namespace:Scoala3.Converters"
+        
         mc:Ignorable="d"
         Title="EditElevi" Height="450" Width="800"
         Background="AntiqueWhite"
         >
+
+    <Window.DataContext>
+        <ctx:EditEleviVM/>
+    </Window.DataContext>
+
     <Grid>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Button
+                Content="Back"
+                Width="100"
+                Height="30"
+                FontWeight="Bold"
+                FontSize="18"
+                Style="{StaticResource NewGameButtonStyle}"
+                Command="{Binding GoBackCommand}"
+                />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+
+            <Label 
+            Content="Selectati numele:"
+            FontWeight="Bold"
+            FontSize="18"
+            />
+
+            <TextBox 
+                Name="nameTextBox" 
+                Text = "{Binding ElementName=elevGrid,
+                Path=SelectedItem.Nume, UpdateSourceTrigger=PropertyChanged}"
+                />
+
+            <Label 
+            Content="Selectati clasa:"
+            FontWeight="Bold"
+            FontSize="18"
+            />
+            
+            <DataGrid Name="calseGrid"   AutoGenerateColumns="False" 
+                  ItemsSource="{Binding Clase}" IsReadOnly="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                      Height="90">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id clasa" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Nume clasa" Binding="{Binding NumeClasa}"/>
+                    <DataGridTextColumn Header="Specializare" Binding="{Binding Specializare}"/>
+                    <DataGridTextColumn Header="Nume diriginte" Binding="{Binding NumeDiriginte}"/>
+                    <DataGridTextColumn Header="AnStudii" Binding="{Binding AnStudii}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+            <Label 
+            Content="Selectati elevul:"
+            FontWeight="Bold"
+            FontSize="18"
+            />
+
+            <DataGrid Name="elevGrid"   AutoGenerateColumns="False" 
+                  ItemsSource="{Binding Elevi}" IsReadOnly="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                      Height="90">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nume Elev" Binding="{Binding Nume}"/>
+                    <DataGridTextColumn Header="Specializare" Binding="{Binding Specializare}"/>
+                    <DataGridTextColumn Header="An Studii" Binding="{Binding AnStudii}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+            <StackPanel Margin="0,30,0,0" Orientation="Horizontal" 
+                        HorizontalAlignment="Center">
+                
+                <StackPanel.Resources>
+                    <convert:ElevConverter x:Key="elevConverter" />
+                </StackPanel.Resources>
+                
+                <Button
+                Content="Adauga"
+                Width="120"
+                Height="30"
+                FontWeight="Bold"
+                FontSize="18"
+                Style="{StaticResource NewGameButtonStyle}"
+                Command="{Binding GoBackCommand}"
+                >
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource elevConverter}">
+                            <Binding ElementName="nameTextBox" Path="Text"/>
+                            <Binding ElementName="calseGrid" Path="SelectedItem.Id"/>
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+                <Button
+                Content="Modifica"
+                Width="120"
+                Height="30"
+                FontWeight="Bold"
+                FontSize="18"
+                Style="{StaticResource NewGameButtonStyle}"
+                Command="{Binding GoBackCommand}"
+                />
+                <Button
+                Content="Sterge"
+                Width="120"
+                Height="30"
+                FontWeight="Bold"
+                FontSize="18"
+                Style="{StaticResource NewGameButtonStyle}"
+                Command="{Binding GoBackCommand}"
+                />
+            </StackPanel>
+            
+        </StackPanel>
         
     </Grid>
+       
 </Window>

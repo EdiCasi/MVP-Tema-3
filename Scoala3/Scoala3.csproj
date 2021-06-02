@@ -57,11 +57,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\AccountConvert.cs" />
+    <Compile Include="Converters\ElevConverter.cs" />
     <Compile Include="DataAccesLayer\AccountDAL.cs" />
+    <Compile Include="DataAccesLayer\ClasaDAL.cs" />
     <Compile Include="DataAccesLayer\DALHelper.cs" />
+    <Compile Include="DataAccesLayer\ElevDAL.cs" />
+    <Compile Include="Helpers\HelperMethod.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Clasa.cs" />
+    <Compile Include="Models\Elev.cs" />
     <Compile Include="ViewModel\AdminVM.cs" />
+    <Compile Include="ViewModel\EditEleviVM.cs" />
     <Compile Include="ViewModel\LoginScreenVM.cs" />
     <Compile Include="Views\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>

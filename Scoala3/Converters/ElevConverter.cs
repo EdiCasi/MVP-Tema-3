@@ -7,15 +7,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace Scoala3.Converter
+namespace Scoala3.Converters
 {
-    class AccountConvert : IMultiValueConverter
+    class ElevConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (values[0] != null && values[1] != null)
             {
-                return new Account(values[0].ToString(), values[1].ToString());
+                return new Elev()
+                {
+                    Nume = values[0].ToString(),
+                    IdClasa = Int32.Parse(values[1].ToString())
+                };
             }
             else
             {
@@ -27,5 +31,6 @@ namespace Scoala3.Converter
         {
             throw new NotImplementedException();
         }
+
     }
 }

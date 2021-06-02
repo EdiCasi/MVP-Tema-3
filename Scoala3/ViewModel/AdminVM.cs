@@ -1,4 +1,5 @@
 ﻿using Scoala3.Helpers;
+using Scoala3.Models;
 using Scoala3.Views;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace Scoala3.ViewModel
             {
                 if (openEditEleviCommand == null)
                 {
-                    openEditEleviCommand = new RelayCommand(OpenEditElevi);
+                    openEditEleviCommand = new RelayCommand<Elev>(OpenEditElevi);
                 }
 
                 return openEditEleviCommand;
@@ -34,7 +35,7 @@ namespace Scoala3.ViewModel
             {
                 if (goBackCommand == null)
                 {
-                    goBackCommand = new RelayCommand(goBack);
+                    goBackCommand = new RelayCommand<Elev>(goBack);
                 }
 
                 return goBackCommand;
@@ -46,19 +47,14 @@ namespace Scoala3.ViewModel
         #region Data Members
 
         public void OpenEditElevi(object account)
-        {
-            EditElevi editElevi = new EditElevi();
-            System.Windows.Application.Current.MainWindow.Close();
-            App.Current.MainWindow = editElevi;
-            editElevi.Show();
+        { 
+            HelperMethod.SwitchWindow(new EditElevi());
         }
 
         public void goBack(object account)
         {
-            MainWindow main = new MainWindow();
-            System.Windows.Application.Current.MainWindow.Close();
-            App.Current.MainWindow = main;
-            main.Show();
+           
+            HelperMethod.SwitchWindow(new MainWindow());
         }
         #endregion
     }

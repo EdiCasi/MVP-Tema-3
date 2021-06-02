@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Scoala3.Helpers
 {
-    class RelayCommand : ICommand
+    class RelayCommand<T> : ICommand
     {
         private Action<object> commandTask;
         private Predicate<object> canExecuteTask;

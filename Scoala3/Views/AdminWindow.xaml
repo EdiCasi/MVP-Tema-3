@@ -18,9 +18,7 @@
     </Window.DataContext>
 
     <Grid>
-        <StackPanel
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label 
             Content="Ce doriti sa schimbati?"
             HorizontalAlignment="Center" 
