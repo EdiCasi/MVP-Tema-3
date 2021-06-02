@@ -1,4 +1,4 @@
-﻿<Window x:Class="Scoala3.Views.EditProfesori"
+﻿<Window x:Class="Scoala3.Views.EditMaterii"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,52 +9,39 @@
         xmlns:convert="clr-namespace:Scoala3.Converters"
         
         mc:Ignorable="d"
-        Title="EditProfesori" Height="600" Width="500"
-        
-        Background="AntiqueWhite"
-        >
+        Title="EditMaterii" Height="600" Width="500"
+        Background="AntiqueWhite">
+
     <Window.DataContext>
-        <ctx:EditProfesoriVM/>
+        <ctx:EditEleviVM/>
     </Window.DataContext>
-    
+
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
             
-            
             <Label 
-            Content="Selectati numele:"
+            Content="Selectati numele materiei:"
             FontWeight="Bold"
             FontSize="18"
             />
 
             <TextBox 
                 Name="nameTextBox" 
-                Text = "{Binding ElementName=profesorGrid,
+                Text = "{Binding ElementName=elevGrid,
                 Path=SelectedItem.Nume, UpdateSourceTrigger=PropertyChanged}"
                 />
 
             <Label 
-            Content="Selectati specializarea:"
+            Content="Id Materie:"
             FontWeight="Bold"
             FontSize="18"
             />
 
-            <TextBox 
-                Name="specializareTextBox" 
-                Text = "{Binding ElementName=profesorGrid,
-                Path=SelectedItem.Specializare, UpdateSourceTrigger=PropertyChanged}"
-                />
-
-            <Label 
-            Content="Profesorul este si diriginte?"
-            FontWeight="Bold"
-            FontSize="18"
-            />
-
-            <TextBox 
-                Name="isDiriginteTextBox" 
-                Text = "{Binding ElementName=profesorGrid,
-                Path=SelectedItem.isDiriginte, UpdateSourceTrigger=PropertyChanged}"
+            <TextBlock 
+                Name="idMaterieTextBlock" 
+                Text = "{Binding ElementName=elevGrid,
+                Path=SelectedItem.IdElev, UpdateSourceTrigger=PropertyChanged}"
+                Background="White"
                 />
 
             <Label 
@@ -65,12 +52,24 @@
 
             <TextBlock 
                 Name="idProfesorTextBlock" 
-                Text = "{Binding ElementName=profesorGrid,
-                Path=SelectedItem.Id, UpdateSourceTrigger=PropertyChanged}"
+                Text = "{Binding ElementName=elevGrid,
+                Path=SelectedItem.IdElev, UpdateSourceTrigger=PropertyChanged}"
                 Background="White"
                 />
-            
-            
+
+            <Label 
+            Content="Id Clasa:"
+            FontWeight="Bold"
+            FontSize="18"
+            />
+
+            <TextBlock 
+                Name="idClasaTextBlock" 
+                Text = "{Binding ElementName=elevGrid,
+                Path=SelectedItem.IdElev, UpdateSourceTrigger=PropertyChanged}"
+                Background="White"
+                />
+
             <Label 
             Content="Selectati un profesor:"
             FontWeight="Bold"
@@ -87,12 +86,31 @@
                     <DataGridTextColumn Header="EsteDiriginte" Binding="{Binding isDiriginte}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            
+
+            <Label 
+            Content="Selectati clasa:"
+            FontWeight="Bold"
+            FontSize="18"
+            />
+
+            <DataGrid Name="calseGrid"   AutoGenerateColumns="False" 
+                  ItemsSource="{Binding Clase}" IsReadOnly="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                      Height="90">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id clasa" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Nume clasa" Binding="{Binding NumeClasa}"/>
+                    <DataGridTextColumn Header="Specializare" Binding="{Binding Specializare}"/>
+                    <DataGridTextColumn Header="Nume diriginte" Binding="{Binding NumeDiriginte}"/>
+                    <DataGridTextColumn Header="AnStudii" Binding="{Binding AnStudii}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
             <StackPanel Margin="0,30,0,0" Orientation="Horizontal" 
                         HorizontalAlignment="Center">
 
                 <StackPanel.Resources>
-                    <convert:ProfesorConverter x:Key="profesorConverter" />
+                    <convert:ElevConverter x:Key="elevConverter" />
                 </StackPanel.Resources>
 
 
@@ -106,11 +124,10 @@
                 Command="{Binding AddCommand}"
                 >
                     <Button.CommandParameter>
-                        <MultiBinding Converter="{StaticResource profesorConverter}">
-                            <Binding ElementName="idProfesorTextBlock" Path="Text"/>
+                        <MultiBinding Converter="{StaticResource elevConverter}">
                             <Binding ElementName="nameTextBox" Path="Text"/>
-                            <Binding ElementName="specializareTextBox" Path="Text"/>
-                            <Binding ElementName="isDiriginteTextBox" Path="Text"/>
+                            <Binding ElementName="idClasaTextBox" Path="Text"/>
+                            <Binding ElementName="idElevTextBlock" Path="Text"/>
                         </MultiBinding>
                     </Button.CommandParameter>
                 </Button>
@@ -127,11 +144,10 @@
                 Command="{Binding ModifyCommand}"
                  >
                     <Button.CommandParameter>
-                        <MultiBinding Converter="{StaticResource profesorConverter}">
-                            <Binding ElementName="idProfesorTextBlock" Path="Text"/>
+                        <MultiBinding Converter="{StaticResource elevConverter}">
                             <Binding ElementName="nameTextBox" Path="Text"/>
-                            <Binding ElementName="specializareTextBox" Path="Text"/>
-                            <Binding ElementName="isDiriginteTextBox" Path="Text"/>
+                            <Binding ElementName="idClasaTextBox" Path="Text"/>
+                            <Binding ElementName="idElevTextBlock" Path="Text"/>
                         </MultiBinding>
                     </Button.CommandParameter>
                 </Button>
@@ -147,17 +163,16 @@
                 Command="{Binding DeleteCommand}"
                 >
                     <Button.CommandParameter>
-                        <MultiBinding Converter="{StaticResource profesorConverter}">
-                            <Binding ElementName="idProfesorTextBlock" Path="Text"/>
+                        <MultiBinding Converter="{StaticResource elevConverter}">
                             <Binding ElementName="nameTextBox" Path="Text"/>
-                            <Binding ElementName="specializareTextBox" Path="Text"/>
-                            <Binding ElementName="isDiriginteTextBox" Path="Text"/>
+                            <Binding ElementName="idClasaTextBox" Path="Text"/>
+                            <Binding ElementName="idElevTextBlock" Path="Text"/>
                         </MultiBinding>
                     </Button.CommandParameter>
                 </Button>
             </StackPanel>
+
         </StackPanel>
-        
         
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">
             <Button
@@ -169,8 +184,6 @@
                 Style="{StaticResource NewGameButtonStyle}"
                 Command="{Binding GoBackCommand}"
                 />
-            
         </StackPanel>
-        
     </Grid>
 </Window>

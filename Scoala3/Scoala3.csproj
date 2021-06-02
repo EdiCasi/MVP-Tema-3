@@ -80,6 +80,9 @@
     <Compile Include="Views\EditElevi.xaml.cs">
       <DependentUpon>EditElevi.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditMaterii.xaml.cs">
+      <DependentUpon>EditMaterii.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditProfesori.xaml.cs">
       <DependentUpon>EditProfesori.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EditElevi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditMaterii.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
