@@ -4,9 +4,61 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Scoala3.Views"
-        mc:Ignorable="d"
-        Title="Medii" Height="450" Width="800">
-    <Grid>
         
+        xmlns:ctx ="clr-namespace:Scoala3.ViewModel"
+        
+        mc:Ignorable="d"
+        Title="Medii" Height="600" Width="500"
+        Background="AntiqueWhite">
+
+    <Window.DataContext>
+        <ctx:MediiVM/>
+    </Window.DataContext>
+    
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Button
+                Content="Back"
+                Width="100"
+                Height="30"
+                FontWeight="Bold"
+                FontSize="18"
+                Style="{StaticResource NewGameButtonStyle}"
+                Command="{Binding GoBackCommand}"
+                />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button
+                Content="Refresh"
+                Width="100"
+                Height="30"
+                FontWeight="Bold"
+                FontSize="18"
+                Style="{StaticResource NewGameButtonStyle}"
+                Command="{Binding RefreshCommand}"
+                />
+        </StackPanel>
+
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+
+            <Label 
+            Content="Mediile dumneavoastra:"
+            FontWeight="Bold"
+            FontSize="18"
+            />
+
+            <DataGrid Name="noteGrid"   AutoGenerateColumns="False" 
+                  ItemsSource="{Binding Medii}" IsReadOnly="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  Height="300">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nume Materie" Binding="{Binding NumeMaterie}"/>
+                    <DataGridTextColumn Header="Medie" Binding="{Binding medieNumeric}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+
     </Grid>
 </Window>

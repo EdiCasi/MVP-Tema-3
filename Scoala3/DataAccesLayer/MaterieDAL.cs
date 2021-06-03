@@ -96,5 +96,32 @@ namespace Scoala3.DataAccesLayer
                 cmd.ExecuteNonQuery();
             }
         }
+        public static ObservableCollection<Medie> getMateriiNume(Elev elev)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                ObservableCollection<Medie> result = new ObservableCollection<Medie>();
+
+                SqlCommand cmd = new SqlCommand("getNumeMaterii", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter paramIdClasa = new SqlParameter("@idClasa", elev.IdClasa);
+                cmd.Parameters.Add(paramIdClasa);
+                con.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Medie medie = new Medie();
+
+                    medie.NumeMaterie = reader.GetString(0);
+                    medie.medieNumeric = "0";
+                    result.Add(medie);
+                }
+                reader.Close();
+
+                return result;
+            }
+        }
     }
 }
