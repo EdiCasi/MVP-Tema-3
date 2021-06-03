@@ -25,7 +25,7 @@ namespace Scoala3.DataAccesLayer
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    return new Account(reader["username"].ToString(), reader["parola"].ToString(), reader["acces"].ToString());
+                    return new Account(reader["id_cont"].ToString(),reader["username"].ToString(), reader["parola"].ToString(), reader["acces"].ToString());
                 }
                 reader.Close();
             }

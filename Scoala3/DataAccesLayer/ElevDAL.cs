@@ -90,5 +90,31 @@ namespace Scoala3.DataAccesLayer
                 cmd.ExecuteNonQuery();
             }
         }
+        public static Elev getElevFromAccount(Account account)
+        {
+            using (SqlConnection con = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("getElevFromAccount", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter paramIdAccount = new SqlParameter("@idCont", Int32.Parse(account.Id));
+
+                cmd.Parameters.Add(paramIdAccount);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return new Elev()
+                    {
+                        IdElev=reader["id_elev"].ToString(),
+                        Nume=reader["nume"].ToString(),
+                        IdClasa=reader["id_clasa"].ToString(), 
+                    };
+                }
+                reader.Close();
+
+            }
+            return null;
+        }
     }
 }

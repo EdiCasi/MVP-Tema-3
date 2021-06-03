@@ -78,7 +78,7 @@
             FontWeight="Bold"
             FontSize="18"
             Style="{StaticResource NewGameButtonStyle}"
-            Command="{Binding OpenWindowCommand}"
+            Command="{Binding LogInCommand}"
             >
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource accountConvert}">

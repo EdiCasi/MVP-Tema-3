@@ -65,6 +65,7 @@
     <Compile Include="DataAccesLayer\DALHelper.cs" />
     <Compile Include="DataAccesLayer\ElevDAL.cs" />
     <Compile Include="DataAccesLayer\MaterieDAL.cs" />
+    <Compile Include="DataAccesLayer\NotaDAL.cs" />
     <Compile Include="DataAccesLayer\ProfesorDAL.cs" />
     <Compile Include="Helpers\HelperMethod.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
@@ -72,12 +73,18 @@
     <Compile Include="Models\Clasa.cs" />
     <Compile Include="Models\Elev.cs" />
     <Compile Include="Models\Materie.cs" />
+    <Compile Include="Models\Nota.cs" />
     <Compile Include="Models\Profesor.cs" />
     <Compile Include="ViewModel\AdminVM.cs" />
     <Compile Include="ViewModel\EditEleviVM.cs" />
     <Compile Include="ViewModel\EditMateriiVM.cs" />
     <Compile Include="ViewModel\EditProfesoriVM.cs" />
+    <Compile Include="ViewModel\ElevWindowVM.cs" />
     <Compile Include="ViewModel\LoginScreenVM.cs" />
+    <Compile Include="ViewModel\NotaVM.cs" />
+    <Compile Include="Views\Absente.xaml.cs">
+      <DependentUpon>Absente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
@@ -90,6 +97,9 @@
     <Compile Include="Views\EditProfesori.xaml.cs">
       <DependentUpon>EditProfesori.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ElevWindow.xaml.cs">
+      <DependentUpon>ElevWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -97,6 +107,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\Medii.xaml.cs">
+      <DependentUpon>Medii.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Note.xaml.cs">
+      <DependentUpon>Note.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\Absente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,7 +133,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ElevWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Medii.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Note.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

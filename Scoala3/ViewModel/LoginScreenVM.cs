@@ -18,17 +18,17 @@ namespace Scoala3.ViewModel
 
         #region Command Members
 
-        private ICommand openWindowCommand;
-        public ICommand OpenWindowCommand
+        private ICommand logInCommand;
+        public ICommand LogInCommand
         {
             get
             {
-                if (openWindowCommand == null)
+                if (logInCommand == null)
                 {
-                    openWindowCommand = new RelayCommand<Account>(OpenWindow);
+                    logInCommand = new RelayCommand<Account>(Login);
                 }
 
-                return openWindowCommand;
+                return logInCommand;
             }
         }
 
@@ -36,12 +36,17 @@ namespace Scoala3.ViewModel
 
         #region Data Members
 
-        public void OpenWindow(object account)
+        public void Login(object account)
         {
             Account readedAccount = AccountDAL.ExistAccount((Account)account);
             if(readedAccount!=null && readedAccount.acces=="administrator")
             {
                 HelperMethod.SwitchWindow(new AdminWindow());
+            }
+            else if(readedAccount != null && readedAccount.acces == "elev")
+            {
+                HelperMethod.SwitchWindow(new ElevWindow());
+                ElevWindowVM.ELEVLOGAT = ElevDAL.getElevFromAccount(readedAccount);
             }
         }
 

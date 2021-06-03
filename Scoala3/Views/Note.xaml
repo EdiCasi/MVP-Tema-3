@@ -1,0 +1,67 @@
+﻿<Window x:Class="Scoala3.Views.Note"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Scoala3.Views"
+        
+         xmlns:ctx ="clr-namespace:Scoala3.ViewModel"
+        
+        mc:Ignorable="d"
+        Title="Note" Height="600" Width="500"
+        Background="AntiqueWhite">
+    
+    <Window.DataContext>
+        <ctx:NotaVM/>
+    </Window.DataContext>
+    
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">
+        <Button
+                Content="Back"
+                Width="100"
+                Height="30"
+                FontWeight="Bold"
+                FontSize="18"
+                Style="{StaticResource NewGameButtonStyle}"
+                Command="{Binding GoBackCommand}"
+                />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button
+                Content="Refresh"
+                Width="100"
+                Height="30"
+                FontWeight="Bold"
+                FontSize="18"
+                Style="{StaticResource NewGameButtonStyle}"
+                Command="{Binding RefreshCommand}"
+                />
+        </StackPanel>
+
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+            
+            <Label 
+            Content="Notele dumneavoastra:"
+            FontWeight="Bold"
+            FontSize="18"
+            />
+
+            <DataGrid Name="noteGrid"   AutoGenerateColumns="False" 
+                  ItemsSource="{Binding Note}" IsReadOnly="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  Height="300">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding IdNota}"/>
+                    <DataGridTextColumn Header="Nume Materie" Binding="{Binding NumeMaterie}"/>
+                    <DataGridTextColumn Header="EsteTeza" Binding="{Binding isTeza}"/>
+                    <DataGridTextColumn Header="Nota" Binding="{Binding valoareNota}"/>
+                    <DataGridTextColumn Header="Semestru" Binding="{Binding Semestru}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
