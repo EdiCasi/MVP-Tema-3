@@ -29,6 +29,17 @@
                 Command="{Binding GoBackCommand}"
                 />
         </StackPanel>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button
+                Content="Refresh"
+                Width="100"
+                Height="30"
+                FontWeight="Bold"
+                FontSize="18"
+                Style="{StaticResource NewGameButtonStyle}"
+                Command="{Binding RefreshCommand}"
+                />
+        </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
 
             <Label 

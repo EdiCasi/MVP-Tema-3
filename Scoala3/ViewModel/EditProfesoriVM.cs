@@ -35,6 +35,20 @@ namespace Scoala3.ViewModel
             }
         }
 
+        private ICommand refreshCommand;
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                if (refreshCommand == null)
+                {
+                    refreshCommand = new RelayCommand<Materie>(refresh);
+                }
+
+                return refreshCommand;
+            }
+        }
+
         private ICommand addCommand;
         public ICommand AddCommand
         {
@@ -91,6 +105,11 @@ namespace Scoala3.ViewModel
         public void goBack(object account)
         {
             HelperMethod.SwitchWindow(new AdminWindow());
+        }
+
+        public void refresh(object account)
+        {
+            HelperMethod.SwitchWindow(new EditProfesori());
         }
 
         public void addProfesor(object profesor)

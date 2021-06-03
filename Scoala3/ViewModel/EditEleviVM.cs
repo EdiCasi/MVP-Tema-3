@@ -74,6 +74,20 @@ namespace Scoala3.ViewModel
             }
         }
 
+        private ICommand refreshCommand;
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                if (refreshCommand == null)
+                {
+                    refreshCommand = new RelayCommand<Materie>(refresh);
+                }
+
+                return refreshCommand;
+            }
+        }
+
         #endregion
 
         #region Data Members
@@ -98,7 +112,10 @@ namespace Scoala3.ViewModel
         {
             HelperMethod.SwitchWindow(new AdminWindow());
         }
-
+        public void refresh(object account)
+        {
+            HelperMethod.SwitchWindow(new EditElevi());
+        }
         public void addElev(object elev)
         {
             if (((Elev)elev).IdClasa == "")
