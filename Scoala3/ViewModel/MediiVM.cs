@@ -57,24 +57,40 @@ namespace Scoala3.ViewModel
 
         public ObservableCollection<Medie> Medii { get; set; }
         public ObservableCollection<Nota> Note { get; set; }
-
+        public float formulaCalcultare(float suma, float count, float teza)
+        {
+            if (suma == 0)
+                return 0;
+            if (teza != 0)
+            {
+                return ((suma / count) * 3 + teza) / 4;
+            }
+            else
+            {
+                return (suma / count);
+            }
+        }
         public void CalculareMedii()
         {
             foreach (Medie medie in Medii)
             {
                 float suma = 0;
                 float countNota = 0;
+                float teza = 0;
                 foreach (Nota nota in Note)
                 {
+                    if (medie.NumeMaterie.Equals(nota.NumeMaterie) && nota.isTeza != "0")
+                    {
+                        teza = Int32.Parse(nota.valoareNota);
+                        continue;
+                    }
                     if (medie.NumeMaterie.Equals(nota.NumeMaterie))
                     {
                         suma += Int32.Parse(nota.valoareNota);
                         countNota++;
                     }
                 }
-                float medieAritmetica = 0;
-                if (suma != 0)
-                    medieAritmetica = suma / countNota;
+                float medieAritmetica = formulaCalcultare(suma, countNota, teza);
 
                 medie.medieNumeric = medieAritmetica.ToString("0.00");
             }

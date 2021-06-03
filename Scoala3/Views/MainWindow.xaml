@@ -12,7 +12,8 @@
         
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        Background="AntiqueWhite">
+        Background="AntiqueWhite"
+        WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <ctx:LoginScreenVM/>
     </Window.DataContext>

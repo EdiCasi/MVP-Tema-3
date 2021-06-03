@@ -9,7 +9,8 @@
         
         mc:Ignorable="d"
         Title="Medii" Height="600" Width="500"
-        Background="AntiqueWhite">
+        Background="AntiqueWhite"
+        WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
         <ctx:MediiVM/>

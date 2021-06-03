@@ -9,7 +9,8 @@
         
         mc:Ignorable="d"
         Title="ElevWindow" Height="450" Width="800"
-        Background="AntiqueWhite">
+        Background="AntiqueWhite"
+        WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
         <ctx:ElevWindowVM/>

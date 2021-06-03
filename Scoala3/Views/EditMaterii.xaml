@@ -10,7 +10,8 @@
         
         mc:Ignorable="d"
         Title="EditMaterii" Height="750" Width="500"
-        Background="AntiqueWhite">
+        Background="AntiqueWhite"
+        WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
         <ctx:EditMateriiVM/>

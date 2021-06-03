@@ -11,6 +11,7 @@
         mc:Ignorable="d"
         Title="EditElevi" Height="600" Width="500"
         Background="AntiqueWhite"
+        WindowStartupLocation="CenterScreen"
         >
 
     <Window.DataContext>
